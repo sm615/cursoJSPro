@@ -1,31 +1,22 @@
-const video = document.querySelector("video")
-const button = document.querySelector("button")
+/* ----------------------- Scope ----------------------- */
 
-class MediaPlayer
-{
-    constructor(config) {
-        this.media = config.el
-    }
-    
-    togglePlay()
-    {
-        if (this.media.paused) {
-            this.media.play()
-        } else {
-            this.media.pause()
-        }
-    }
-}
+/* Global Scope (alcance global):
+las variables son accesibles desde el ambiente global (windows) */
 
-const player = new MediaPlayer({ el: video });
+/* Function Scope (alcance funcional):
+las variables solo existen dentro de la funcion */
 
-button.onclick = () => player.togglePlay();
+/* Block Scope (alcance de bloque):
+las variables se pueden acceder solo dentro del bloque de codigo (codigo entre "{}") */
 
-/* ----------------------Cómo llega un script al navegador ----------------------*/
+/* Modulo Scope (alcance modular): se agrega type = "modulo" a la etiqueta script
+concepto nuevo, las variables estan limitadas al archivo donde viven, no se pueden acceder ni de la consola */
 
-/* atributo async en los scripts externos permite que el DOM se siga cargando mientras hacemos la peticion del script externo
-por ejemplo: google analytics; una vez se resulva la peticion, se detiene la carga del DOM y se ejecuta el js para luego
-seguir con la carga del DOM */
+/* Podemos usar import y export
 
-/* atributo defer: este atributo va a dejar la ejecucion del archivo js hasta el final, la peticion es asincrona 
-pero deja la ejecucion al final */
+agregamos "nombre__" import from "ruta del archivo" 
+y en el archivo que vamos a exportar escribimos export default "nombre__"
+para exportar una variable escribimos el nombre entre {} en el import
+export const doo = 'algo'
+import { doo } from ...
+*/
