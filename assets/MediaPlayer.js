@@ -10,7 +10,8 @@ class MediaPlayer
     _initPlugins = function () {
         this.plugins.forEach(plugin => {
             plugin.run(this)
-        });
+        })
+        
     }
     togglePlay()
     {

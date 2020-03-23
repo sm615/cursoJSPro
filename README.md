@@ -21,3 +21,37 @@ Cuando realizamos un llamado de manera secuencial, se van resolviendo los llamad
 Cuando utilizamos promesas de manera paralela se hacen los llamados **al mismo tiempo** y se espera a que todas las promesas se resuelvan correctamente, **si una de ellas lanza un error**, se **rechazan todas** las promesas inmediatamente.
 Utilizamos ``Promise.all()`` y le pasamos un **arreglo** con las promesas que queremos resolver.
 Tambien podemos usar ``Promise.race()`` para que nos retorne solo la **primera** promesa que se resuelva exitosamente.
+
+2020-03-22 21:05:14 Sunday
+## Getters y Setters
+### Links:
+- ####  [Platzi](https://platzi.com/clases/1642-javascript-profesional/22171-getters-y-setters/ "Platzi")
+- #### [Articulo](https://www.hongkiat.com/blog/getters-setters-javascript/ "Articulo")
+
+**Getters** y **Setters** son funciones o metodos que permiten **obtener** o **establecer** propiedades. 
+Al utilizar getters y setters **escondemos** la informacion para que no pueda ser **accedida** por **otro** codigo y terminemos modificandola accidentalmente.
+Son muy usados cuando se va **aplicar** cierta operacion, como la validacion, sobre la informacion **antes** de guardarla o mostrarla. Ej:
+
+    var obj = {
+      n: 67,
+      get id() {
+          return 'The ID is: ' + this.n;
+      },
+      set id(val) {
+          if (typeof val === 'number')
+              this.n = val;
+      }
+    }
+     
+    console.log(obj.id);
+    // "The ID is: 67"
+     
+    obj.id = 893;
+     
+    console.log(obj.id);
+    // "The ID is: 893"
+     
+    obj.id = 'hello';
+     
+    console.log(obj.id);
+    // "The ID is: 893"

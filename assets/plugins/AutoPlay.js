@@ -1,7 +1,7 @@
 
 class AutoPlay 
 {
-    constructor() { }
+    constructor() {}
     run(player) {
         player.sound()
         player.togglePlay()
