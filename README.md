@@ -55,3 +55,47 @@ Son muy usados cuando se va **aplicar** cierta operacion, como la validacion, so
      
     console.log(obj.id);
     // "The ID is: 893"
+
+2020-03-25 21:42:50 Wednesday
+## Proxys
+### Links:
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22172-proxy/ "Platzi")
+- #### [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Proxy "MDN")
+
+**var p = new Proxy( target, handler )**
+
+Un objeto **TARGET** (puede ser cualquier órden de objetos, incluyendo un array nativa, funcion o incluso otro proxy) o función que contenga el Proxy; es sobre el cual se va a realizar las validaciones del handler
+
+**HANDLER** un objeto cuyas propiedades son funciones que definen el comportamiento del proxy cuando una operación es realizada en él
+
+El método **Object.keys()** devuelve un array de los nombres de la propiedades de un objeto, en el mismo orden como se obtienen en un loop norma
+
+## Generators
+### Links:
+- ####  [Platzi](https://platzi.com/clases/1642-javascript-profesional/22173-generators/ "Platzi")
+- #### [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/function* "MDN")
+
+Los generadores son funciones especiales de las que se puede entrar y salir, en otras palabras empezar a ejecutar y luego parar para seguir con otra parte del codigo. Su contexto (ambito de las variables) sera recordado, es decir, que tiene en cuenta el scope. 
+
+La llamada a una función generadora **no** ejecuta su cuerpo inmediatamente; se devuelve un objeto iterador para la función en su lugar. Cuando el metodo **next()** del iterador es llamado , el cuerpo de la función generadora es **ejecutado** hasta la **primera** expresión **yield**, la cual especifica el **valor** que será retornado por el iterador o con, yield*, delega a otra función generadora. El método next() **retorna** un objeto con una **propiedad** **value** que contiene el **valor** bajo el operador yield y una propiedad **done** que indica, con un **booleano**, si la función generadora ha hecho yield al **último** valor.
+
+    function* anotherGenerator(i) {
+      yield i + 1;
+      yield i + 2;
+      yield i + 3;
+    }
+    
+    function* generator(i){
+      yield i;
+      yield* anotherGenerator(i);
+      yield i + 10;
+    }
+    
+    var gen = generator(10);
+    
+    console.log(gen.next().value); // 10
+    console.log(gen.next().value); // 11
+    console.log(gen.next().value); // 12
+    console.log(gen.next().value); // 13
+    console.log(gen.next().value); // 20
+    
