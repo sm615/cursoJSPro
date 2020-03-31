@@ -1,5 +1,13 @@
-# cursoJSPro
+<div align='center'> 
+    <h1>cursoJSPro</h1>
+</div>
 Curso Profesional de JS en Platzi
+
+## Tabla de contenido
+- [Promesas](##Promesas)
+- [Getters y Setters](##Getters-y-Setters)
+- [Proxys](##Proxys)
+- [Generators](##Generators)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -21,6 +29,10 @@ Cuando realizamos un llamado de manera secuencial, se van resolviendo los llamad
 Cuando utilizamos promesas de manera paralela se hacen los llamados **al mismo tiempo** y se espera a que todas las promesas se resuelvan correctamente, **si una de ellas lanza un error**, se **rechazan todas** las promesas inmediatamente.
 Utilizamos ``Promise.all()`` y le pasamos un **arreglo** con las promesas que queremos resolver.
 Tambien podemos usar ``Promise.race()`` para que nos retorne solo la **primera** promesa que se resuelva exitosamente.
+
+<div align='right'> 
+    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+</div>
 
 2020-03-22 21:05:14 Sunday
 ## Getters y Setters
@@ -56,6 +68,10 @@ Son muy usados cuando se va **aplicar** cierta operacion, como la validacion, so
     console.log(obj.id);
     // "The ID is: 893"
 
+<div align='right'> 
+    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+</div>
+
 2020-03-25 21:42:50 Wednesday
 ## Proxys
 ### Links:
@@ -69,6 +85,10 @@ Un objeto **TARGET** (puede ser cualquier órden de objetos, incluyendo un array
 **HANDLER** un objeto cuyas propiedades son funciones que definen el comportamiento del proxy cuando una operación es realizada en él
 
 El método **Object.keys()** devuelve un array de los nombres de la propiedades de un objeto, en el mismo orden como se obtienen en un loop norma
+
+<div align='right'> 
+    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+</div>
 
 ## Generators
 ### Links:
@@ -99,3 +119,6 @@ La llamada a una función generadora **no** ejecuta su cuerpo inmediatamente; se
     console.log(gen.next().value); // 13
     console.log(gen.next().value); // 20
     
+<div align='right'> 
+    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+</div>
