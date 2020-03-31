@@ -1,13 +1,12 @@
 <div align='center'> 
-    <h1>cursoJSPro</h1>
+    <h1>Curso Profesional de JS en Platzi</h1>
 </div>
-Curso Profesional de JS en Platzi
 
 ## Tabla de contenido
-- [Promesas](##Promesas)
-- [Getters y Setters](##Getters-y-Setters)
-- [Proxys](##Proxys)
-- [Generators](##Generators)
+- [Promesas](##promesas)
+- [Getters y Setters](##getters-y-setters)
+- [Proxys](##proxys)
+- [Generators](##generators)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -31,7 +30,7 @@ Utilizamos ``Promise.all()`` y le pasamos un **arreglo** con las promesas que qu
 Tambien podemos usar ``Promise.race()`` para que nos retorne solo la **primera** promesa que se resuelva exitosamente.
 
 <div align='right'> 
-    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+    <small><a href = '##tabla-de-contenido'>vovler al inicio</a></small>
 </div>
 
 2020-03-22 21:05:14 Sunday
@@ -69,7 +68,7 @@ Son muy usados cuando se va **aplicar** cierta operacion, como la validacion, so
     // "The ID is: 893"
 
 <div align='right'> 
-    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+    <small><a href = '##tabla-de-contenido'>vovler al inicio</a></small>
 </div>
 
 2020-03-25 21:42:50 Wednesday
@@ -87,7 +86,7 @@ Un objeto **TARGET** (puede ser cualquier órden de objetos, incluyendo un array
 El método **Object.keys()** devuelve un array de los nombres de la propiedades de un objeto, en el mismo orden como se obtienen en un loop norma
 
 <div align='right'> 
-    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+    <small><a href = '##tabla-de-contenido'>vovler al inicio</a></small>
 </div>
 
 ## Generators
@@ -120,5 +119,5 @@ La llamada a una función generadora **no** ejecuta su cuerpo inmediatamente; se
     console.log(gen.next().value); // 20
     
 <div align='right'> 
-    <small><a href = '##Tabla-de-contenido'>vovler al inicio</a></small>
+    <small><a href = '##tabla-de-contenido'>vovler al inicio</a></small>
 </div>
