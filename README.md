@@ -3,10 +3,10 @@
 </div>
 
 ## Tabla de contenido
-- [Promesas](##promesas)
-- [Getters y Setters](##getters-y-setters)
-- [Proxys](##proxys)
-- [Generators](##generators)
+- [Promesas](#promesas)
+- [Getters y Setters](#getters-y-setters)
+- [Proxys](#proxys)
+- [Generators](#generators)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
