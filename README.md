@@ -1,4 +1,6 @@
-# cursoJSPro
+<div align='center'> 
+    <h1>cursoJSPro</h1>
+</div>
 Curso Profesional de JS en Platzi
 
 2020-03-18 21:40:59 Wednesday
