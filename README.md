@@ -10,6 +10,8 @@
 - [Fetch](#fetch)
 	- [Response](#response)
 	- [Request](#request)
+	- [AbortController](#abortcontroller)
+- [Intersection Observer](#intersectionobserver)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -126,7 +128,7 @@ La llamada a una función generadora **no** ejecuta su cuerpo inmediatamente; se
 </div>
 
 2020-04-03 22:37:18 Friday
-## fetch
+## Fetch
 ### Links:
 - #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22174-fetch-como-cancelar-peticiones/ "Platzi")
 - #### [API fetch](https://www.todojs.com/api-fetch-el-nuevo-estandar-que-permite-hacer-llamadas-http/ "API fetch")
@@ -151,7 +153,11 @@ fetch('https://httpbin.org/ip')
     });
 ```
 cuando no indicamos que metodo utilizar se considera el metodo **GET** por defecto.
-La forma de **configurar** el llamado es utilizar el **segundo** parámetro de fetch (), donde pasaremos un objeto con las opciones
+La forma de **configurar** el llamado es utilizar el **segundo** parámetro de fetch (), donde pasaremos un objeto con las opciones de configuracion que deseamos.
+
+```javascript
+fetch( url, config )
+```
 
 ```javascript
 fetch('https://httpbin.org/post', {
@@ -241,6 +247,57 @@ fetch(request)
 - **Request.credentials:** contiene las credenciales de la solitud.
 - **Request.redirect:** contiene el modo de como son manipuladas las redirecciones. puedes ser follow, error, o manual.
 - **Request.cache:** contiene el modo de cache de la solicitud.
+
+2020-04-06 22:32:58 Monday
+
+### AbortController
+AbortController te da los controles para poder detener las peticiones hechas con fetch().
+AbortControler tiene un parametro llamado signal que se le pasa a fetch como segundo parametro y luego para detener la peticion simplemente llamamos al metodo AbortController.abort();
+el metodo .abort() anula un request DOM que no se haya completado.
+```javascript
+let controller = new AbortController();
+fetch(url, { signal: controller.signal })
+```
+
+<div align='right'> 
+    <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
+</div>
+
+2020-04-10 16:05:47 Friday
+
+## IntersectionObserver
+### Links:
+- #### [MDN](https://developer.mozilla.org/es/docs/Web/API/Intersection_Observer_API "MDN")
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22175-intersectionobserver/ "Platzi")
+
+Permite configurar un funcion callback que es llamada cada vez que un elemento (target) intersecta con otro, ya se el viewport u otro elemento cualquiera (root). Usualmente queremos observar los cambios con respecto al viewport (para esto especificamos 'null' como elemento root).
+El grado de intersection entre el target y el root se llama intersection ratio. Y es una representacion porcentual que va desde 0 a 1.
+
+##### Creando un intersection observer
+
+para crear un intersectin observer llamos a su constructor y le pasamos como parametros una funcion callback, que se ejecuta cada vez que un nivel (threshold) sea cruzado en una direccion o en la otra, y un objeto de configuración.
+
+```javascript
+var options = {
+  root: document.querySelector('#scrollArea'),
+  rootMargin: '0px',
+  threshold: 1.0
+}
+
+var observer = new IntersectionObserver(callback, options);
+```
+threshold es un numero o un array de numeros que indican el porcentaje de visibilidad del elemento target a la cual la funcion callback va a ser llamada.
+
+##### Determinando un objeto para ser obsevado
+
+una vez ya tengamos el observer, necesitamos darle un elemento target para observar
+```javascript
+var target = document.querySelector('#listItem');
+observer.observe(target);
+```
+#### Entries
+
+La funcion callback recibe una lista de objetos llamda IntersectionObserverEntry y el observer, que describe la interseccion entre el target y el root en un momento dado
 
 <div align='right'> 
     <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>

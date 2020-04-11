@@ -13,29 +13,27 @@ class MediaPlayer
         })
         
     }
-    togglePlay()
-    {
-        if (this.media.paused) {
-            this.media.play()
-        } else {
-            this.media.pause()
-        }
+    play() {
+        this.media.play()
     }
-    mute()
-    {
+    pause() {
+        this.media.pause()
+    }
+    togglePlay() {
+        this.media.paused?
+            this.play()
+            :this.pause()
+    }
+    mute() {
         this.media.muted = true;
     }
-    unMute()
-    {
+    unMute() {
         this.media.muted = false;
     }
-    sound()
-    {
-        if (!this.media.muted) {
+    sound() {
+        !this.media.muted?
             this.mute()
-        } else {
-            this.unMute()
-        }
+            :this.unMute()
     }
 }
 
