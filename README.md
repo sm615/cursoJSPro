@@ -12,6 +12,7 @@
 	- [Request](#request)
 	- [AbortController](#abortcontroller)
 - [Intersection Observer](#intersectionobserver)
+- [Visibility Change](#visibilitychange)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -302,3 +303,19 @@ La funcion callback recibe una lista de objetos llamda IntersectionObserverEntry
 <div align='right'> 
     <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
 </div>
+
+2020-04-11 15:08:59 Saturday
+## VisibilityChange
+### Links:
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22176-visibilitychange/ "Platzi")
+
+El **visibilityChange** forma parte del API del DOM llamado **Page Visibility** y nos deja saber si el elemento es visible.
+```javascript
+document.addEventListener('visibilitychange', handlerVisiblilityChange)
+```
+Es un evento que nos permite detectar cuando la pestaña esta siendo **usada** por el usuario o no a traves de **visibilityState.**
+visibilityState tiene dos valores: visible o hidden;
+```javascript
+const isVisible = document.visibilityState === 'visible'
+```
+de esta manera la variable isVisible nos devuelve un booleano dependiendo de si la pestaña esta siendo usada o no.
