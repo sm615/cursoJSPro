@@ -13,6 +13,7 @@
 	- [AbortController](#abortcontroller)
 - [Intersection Observer](#intersectionobserver)
 - [Visibility Change](#visibilitychange)
+- [Service Workers](#serviceworkers)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -319,3 +320,86 @@ visibilityState tiene dos valores: visible o hidden;
 const isVisible = document.visibilityState === 'visible'
 ```
 de esta manera la variable isVisible nos devuelve un booleano dependiendo de si la pestaña esta siendo usada o no.
+
+2020-04-13 18:01:17 Monday
+## ServiceWorkers
+- #### [Google dev](https://developers.google.com/web/fundamentals/primers/service-workers "Google dev")
+
+Es una secuencia de comandos que el navegador ejecuta separado de la pagina web. Lo realmente emocionante acerca de esta api es que permite el administrar expericiencias sin conexión, lo que permite tener mayor control sobre la expericiencia.
+
+Un Service Worker (SW) es un proxy programable. Esto permite controlar la manera en que se procesan las solicitudes la pagina.
+
+El SW tiene un ciclo de vida separado de la pagina web.
+
+Si quieres instalar un service worker para tu sitio, debes registrarlo. Esto se realiza en el lenguaje JavaScript de tu página. Cuando registres un service worker, el navegador iniciará la etapa de instalación del proceso en segundo plano.
+
+Por lo general, durante la etapa de instalación, te convendrá almacenar en caché algunos elementos estáticos. Si todos los archivos se almacenan correctamente en caché, se instalará el service worker. Si no se puede descargar o almacenar en caché alguno de los archivos, el paso de instalación fallará y el service worker no se activará (es decir, no se instalará). Si esto ocurre, no te preocupes; se realizará un nuevo intento la próxima vez. Sin embargo, si la instalación tiene éxito, podrás estar seguro de que dichos elementos estáticos estarán en la caché
+
+Despues de su activacion el SW controlará todas las paginas web que esten a su alcance. Se necesita HTTPS para poder implemetarlo en un sitio web
+
+#### Registro de un Service Worker
+Para instalar un service worker, debes registrarlo en tu página para iniciar el proceso. De esta forma, se comunica al navegador dónde reside el archivo JavaScript de tu service worker.
+```javascript
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+```
+Es muy importante tener en cuenta la direccion del archivo sw.js porque esto determinara el scope y que eventos fetch podra identificar.
+#### Instalación
+Luego del registro, debemos instalar el service worker. Para esto, vamos a al archivo sw.js donde utilizaremos el evento install
+```javascript
+self.addEventListener('install', function(event) {
+  // Perform install steps
+});
+```
+en la devolucion de la llamada install debemos abrir un cache, cargar los archiivos la cache y asegurarnos de que los archivos fueron cargados en el cache o no.
+```javascript
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+  '/',
+  '/styles/main.css',
+  '/script/main.js'
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+```
+Aquí podrás ver que se llama a caches.open() con el nombre de caché deseado; después se llama a cache.addAll() y se pasa la matriz de archivos. Esta es una cadena de promesas (caches.open() y cache.addAll()). El método event.waitUntil() toma una promesa y la usa para saber cuánto tarda la instalación y si se realizó correctamente.
+#### Solicitud de devolución y caché
+```javascript
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+});
+```
+Aquí hemos definido nuestro evento fetch y en event.respondWith(), pasamos una promesa de caches.match(). Este método examina la solicitud y encuentra cualquier resultado almacenado en caché de cualquiera de los caché creados por tu service worker.
+
+Si existe una respuesta, se devuelve el valor almacenado en caché. Si no existe, se devuelve el resultado de una llamada a fetch, que realizará una solicitud de red y devolverá los datos si se puede recuperar algo de la red. Este es un ejemplo simple y en él se usa cualquier recurso que hayamos almacenado en caché durante la instalación.
+<div align='right'> 
+    <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
+</div>
