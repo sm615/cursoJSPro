@@ -1,8 +1,8 @@
-import MediaPlayer from './MediaPlayer.js';
-import AutoPlay from './plugins/AutoPlay.js'
-import AutoPause from './plugins/AutoPause.js'
+import MediaPlayer from './mediaplayer.js';
+import AutoPlay from './plugins/autoplay.js'
+import AutoPause from './plugins/autopause.js'
 
-let plugins = [
+const plugins = [
     new AutoPlay(),
     new AutoPause()
 ]
@@ -19,7 +19,7 @@ const soundButton = document.getElementById('sound_btn')
 soundButton.onclick = () => player.sound()
 
 if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch( error => {
+    navigator.serviceWorker.register('../sw.js').catch( error => {
         console.log(error.message);
     })
 }

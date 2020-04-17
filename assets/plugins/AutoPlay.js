@@ -1,4 +1,3 @@
-
 class AutoPlay 
 {
     constructor() {}
@@ -10,4 +9,4 @@ class AutoPlay
     }
 }
 
-export default AutoPlay
+export {AutoPlay}

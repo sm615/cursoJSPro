@@ -14,6 +14,7 @@
 - [Intersection Observer](#intersectionobserver)
 - [Visibility Change](#visibilitychange)
 - [Service Workers](#serviceworkers)
+- [Tipos Basicos de Typescript](#tiposbasicosdetypescript)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -400,6 +401,82 @@ self.addEventListener('fetch', function(event) {
 Aquí hemos definido nuestro evento fetch y en event.respondWith(), pasamos una promesa de caches.match(). Este método examina la solicitud y encuentra cualquier resultado almacenado en caché de cualquiera de los caché creados por tu service worker.
 
 Si existe una respuesta, se devuelve el valor almacenado en caché. Si no existe, se devuelve el resultado de una llamada a fetch, que realizará una solicitud de red y devolverá los datos si se puede recuperar algo de la red. Este es un ejemplo simple y en él se usa cualquier recurso que hayamos almacenado en caché durante la instalación.
+<div align='right'> 
+    <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
+</div>
+
+2020-04-16 16:41:56 Thursday
+## Tipos Basicos en Typescript
+### Links:
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22179-tipos-basicos/ "Platzi")
+
+En Typescript podemos asignar que tipo de valores va a contener una varible,
+lo que nos va a permitir detectar errores mas rapido.
+Si queremos anotar el tipo de variable lo anotamos al lado de la variable
+
+- Boolean
+```javascript
+let boolean: boolean = true;
+```
+
+- Number
+```javascript
+let numerador: number = 4;
+let denominador = 2;
+```
+
+-  String
+```javascript
+let nombre: string = 'santiago'
+let saludo = `mi nombre es ${nombre}` // mi nombre es santiago
+```
+
+-  Arrays
+```javascript
+let people: string[] = []
+people = ['isabela', 'mario']
+```
+```javascript
+let age: number[] = []
+age = [2, 3, 4]
+```
+```javascript
+let peopleAndAge: Array< string | number > = []
+peopleAndAge = [...people, ...age]
+console.log(peopleAndAge); // ["isabela", "mario", 2, 3, 4]
+```
+
+- Any: se le asigna a la variable que puede, en un futuro, cambiar de tipo
+```javascript
+let comodin: any = 'joker'
+comodin = 2
+```
+
+- object
+```javascript
+let someObject: object = {type: 'wild'}
+```
+
+- Enum es como crear un tipo de variable y el conjunto de valores que podemos asignarles
+```javascript
+enum color {
+    rojo = 'Rojo',
+    verde = 'Verde',
+    azul = 'Azul'
+}
+let colorFavorito: color = color.rojo
+console.log(colorFavorito); // rojo
+```
+ Cuando no le asignamos un valor como en el siguiente caso, las variables van a tomar los valores de 0, 1, 2, 3... etc
+```javascript
+enum color2 {
+    rojo, // 0
+    verde, // 1
+    azul,  // 2
+    amarillo // 3
+}
+console.log(color2.amarillo); // 3
+```
 <div align='right'> 
     <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
 </div>

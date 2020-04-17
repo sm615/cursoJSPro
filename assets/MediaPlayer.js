@@ -7,7 +7,7 @@ class MediaPlayer
         
         this._initPlugins()
     }
-    _initPlugins = function () {
+    _initPlugins() {
         this.plugins.forEach(plugin => {
             plugin.run(this)
         })
@@ -37,4 +37,4 @@ class MediaPlayer
     }
 }
 
-export default MediaPlayer
+export {MediaPlayer}

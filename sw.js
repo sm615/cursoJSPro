@@ -8,7 +8,7 @@ let urlsToCache = [
     '/assets/BigBuckBunny.mp4',
     '/assets/plugins/AutoPause.js',
     '/assets/plugins/AutoPlay.js',
-  ];
+];
 
 self.addEventListener('install', event => {
     event.waitUntil(precache())
