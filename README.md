@@ -14,7 +14,9 @@
 - [Intersection Observer](#intersectionobserver)
 - [Visibility Change](#visibilitychange)
 - [Service Workers](#serviceworkers)
-- [Tipos Basicos de Typescript](#tiposbasicosdetypescript)
+- [Typescript](#typescript)
+  - [Tipos Basicos](#tiposbasicos)
+  - [Function](#function)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -406,7 +408,9 @@ Si existe una respuesta, se devuelve el valor almacenado en caché. Si no existe
 </div>
 
 2020-04-16 16:41:56 Thursday
-## Tipos Basicos en Typescript
+# TypeScript
+
+## Tipos Basicos
 ### Links:
 - #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22179-tipos-basicos/ "Platzi")
 
@@ -476,6 +480,44 @@ enum color2 {
     amarillo // 3
 }
 console.log(color2.amarillo); // 3
+```
+<div align='right'> 
+    <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
+</div>
+
+2020-04-16 22:52:24 Thursday
+## Function
+### Links:
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22180-funciones/ "Platzi")
+
+De esta manera typescript sabe que el dato a regresar es un numero
+```javascript
+let add = (x: number, y: number) => x + y
+```
+
+Si queremos ser mas especificos podemos agregar el tipo al final del parentesis
+```javascript
+let add2 = (x: number, y: number): number => x + y
+let createAdder = (a: number) => (b: number) => b + a;
+const addOne = createAdder(1)
+const addTwo = addOne(2)
+console.log(addTwo); // 3
+```
+
+Si queremos crear una funcion donde uno de sus parametros sea opcional
+agregamos ? antes de los dos puntos. Ej:
+```javascript
+const fullName = (firstName: string, lastName?: string) => `${firstName} ${lastName}`
+const richard = fullName('Richard');
+console.log(richard); // Richard undefined
+```
+
+Si deseamos que el parametro tenga un valor por defecto
+lo agregamos despues del tipado
+```javascript
+const fullName2 = (firstName: string, lastName: string = 'Nieto') => `${firstName} ${lastName}`
+const richard2 = fullName2('Richard');
+console.log(richard2); // Richard Nieto
 ```
 <div align='right'> 
     <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>

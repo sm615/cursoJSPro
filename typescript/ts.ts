@@ -1,57 +1,33 @@
-// Tipos de datos en Typescript
-// En Typescript podemos asignar que tipo de valores va a contener una varible
-// si queremos anotar el tipo de variable lo anotamos al lado de la variable
+// Function
 
-// Boolean
-let boolean: boolean = true;
+// De esta manera typescript sabe que el dato a regresar es un numero
+let add = (x: number, y: number) => x + y
 
-// Number
-let numerador: number = 4;
-let denominador = 2;
+// Si queremos ser mas especificos podemos agregar el tipo al final del parentesis
+let add2 = (x: number, y: number): number => x + y
 
-// String
-let nombre: string = 'santiago'
-let saludo = `mi nombre es ${nombre}`
+let createAdder = (a: number) => (b: number) => b + a;
 
-// Arrays
-let people: string[] = []
-people = ['isabela', 'mario']
+const addOne = createAdder(1)
+const addTwo = addOne(2)
 
-let age: number[] = []
-age = [2, 3, 4]
+console.log(addTwo); // 3
 
-let peopleAndAge: Array< string | number > = []
-peopleAndAge = [...people, ...age]
+// Si queremos crear una funcion donde uno de sus parametros sea opcional
+// agregamos ? antes de los dos puntos. Ej:
 
-console.log(peopleAndAge); // ["isabela", "mario", 2, 3, 4]
+const fullName = (firstName: string, lastName?: string) => `${firstName} ${lastName}`
 
-// Any: se le asigna a la variable que puede, en un futuro, cambiar de tipo
-let comodin: any = 'joker'
-comodin = 2
+const richard = fullName('Richard');
 
-// object
-let someObject: object = {type: 'wild'}
+console.log(richard); // Richard undefined
 
-/* enum es como crear un tipo de variable y el conjunto de valores que podemos asignarles
- *
- */
-enum color {
-    rojo = 'Rojo',
-    verde = 'Verde',
-    azul = 'Azul'
-}
 
-let colorFavorito: color = color.rojo
+// Si deseamos que el parametro tenga un valor por defecto
+// lo agregamos despues del tipado
 
-console.log(colorFavorito); // rojo
+const fullName2 = (firstName: string, lastName: string = 'Nieto') => `${firstName} ${lastName}`
 
-// Cuando no le asignamos un valor como en el siguiente caso, las variables van a tomar los valores de 0, 1, 2, 3... etc
+const richard2 = fullName2('Richard');
 
-enum color2 {
-    rojo, // 0
-    verde, // 1
-    azul,  // 2
-    amarillo // 3
-}
-
-console.log(color2.amarillo); // 3
+console.log(richard2); // Richard Nieto
