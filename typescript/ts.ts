@@ -1,33 +1,37 @@
-// Function
+// Interface
+// Permiten declarar la forma exacta que tiene el objeto
+// no se pueden agregar ni quitar propiedades
 
-// De esta manera typescript sabe que el dato a regresar es un numero
-let add = (x: number, y: number) => x + y
+interface rectangulo {
+    ancho: number
+    alto: number
+}
 
-// Si queremos ser mas especificos podemos agregar el tipo al final del parentesis
-let add2 = (x: number, y: number): number => x + y
+// Las interfaces se vuelven un tipo de dato para los objetos
 
-let createAdder = (a: number) => (b: number) => b + a;
+let rect: rectangulo = {
+    ancho: 4,
+    alto: 5
+}
 
-const addOne = createAdder(1)
-const addTwo = addOne(2)
+// De esta manera le estamos diciendo a la funcion que r es una variable de tipo rectangulo
 
-console.log(addTwo); // 3
+const area = (r: rectangulo) => r.alto * r.ancho;
+const rectArea = area(rect);
 
-// Si queremos crear una funcion donde uno de sus parametros sea opcional
-// agregamos ? antes de los dos puntos. Ej:
+console.log(`el area del rectangulo es: ${rectArea}`); // 20
 
-const fullName = (firstName: string, lastName?: string) => `${firstName} ${lastName}`
+// Es obligatorio pasarle todos los valores a las propiedades del objeto, para hacerlo opcional agregamos el ?
+interface rectangulo2 {
+    ancho: number
+    alto?: number
+}
 
-const richard = fullName('Richard');
+let rect2: rectangulo2 = {
+    ancho: 4
+}
 
-console.log(richard); // Richard undefined
+const area2 = (r: rectangulo2) => r.alto * r.ancho;
+const rectArea2 = area2(rect2);
 
-
-// Si deseamos que el parametro tenga un valor por defecto
-// lo agregamos despues del tipado
-
-const fullName2 = (firstName: string, lastName: string = 'Nieto') => `${firstName} ${lastName}`
-
-const richard2 = fullName2('Richard');
-
-console.log(richard2); // Richard Nieto
+console.log(`el area del rectangulo es: ${rectArea2}`); // NaN

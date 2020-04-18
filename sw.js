@@ -1,13 +1,13 @@
 const CACHE_NAME = 'v1'
 let urlsToCache = [
-    '/',
+    /* '/',
     '/index.html',
     '/assets/script.js',
     '/assets/MediaPlayer.js',
     '/assets/index.css',
     '/assets/BigBuckBunny.mp4',
     '/assets/plugins/AutoPause.js',
-    '/assets/plugins/AutoPlay.js',
+    '/assets/plugins/AutoPlay.js', */
 ];
 
 self.addEventListener('install', event => {

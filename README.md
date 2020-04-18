@@ -15,8 +15,9 @@
 - [Visibility Change](#visibilitychange)
 - [Service Workers](#serviceworkers)
 - [Typescript](#typescript)
-  - [Tipos Basicos](#tiposbasicos)
+  - [Tipos Basicos](#tipos-basicos)
   - [Function](#function)
+  - [Interface](#interface)
 
 2020-03-18 21:40:59 Wednesday
 ## Promesas
@@ -519,6 +520,53 @@ const fullName2 = (firstName: string, lastName: string = 'Nieto') => `${firstNam
 const richard2 = fullName2('Richard');
 console.log(richard2); // Richard Nieto
 ```
+<div align='right'> 
+    <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
+</div>
+
+2020-04-17 21:04:18 Friday
+## Interface
+### Links:
+- #### [Platzi](https://platzi.com/clases/1642-javascript-profesional/22181-interfaces/ "Platzi")
+
+Permiten **declarar** la forma **exacta** que tiene el **objeto**, no se pueden agregar ni quitar propiedades
+```javascript
+interface rectangulo {
+    ancho: number
+    alto: number
+}
+```
+Las interfaces se vuelven **un tipo de dato** para los **objetos**
+```javascript
+let rect: rectangulo = {
+    ancho: 4,
+    alto: 5
+}
+```
+De esta manera le estamos diciendo a la funcion que r es una variable de tipo rectangulo
+```javascript
+const area = (r: rectangulo) => r.alto * r.ancho;
+const rectArea = area(rect);
+console.log(`el area del rectangulo es: ${rectArea}`); // 20
+```
+ Es obligatorio pasarle todos los valores a las propiedades del objeto, para hacerlo opcional agregamos el ?
+```javascript
+interface rectangulo2 {
+    ancho: number
+    alto?: number
+}
+
+let rect2: rectangulo2 = {
+    ancho: 4
+}
+
+const area2 = (r: rectangulo2) => r.alto * r.ancho;
+
+const rectArea2 = area2(rect2);
+
+console.log(`el area del rectangulo es: ${rectArea2}`); // NaN
+```
+
 <div align='right'> 
     <small><a href = '#tabla-de-contenido'>vovler al inicio</a></small>
 </div>
