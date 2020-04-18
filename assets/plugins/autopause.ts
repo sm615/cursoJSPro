@@ -1,11 +1,17 @@
+import { MediaPlayer } from "../mediaplayer";
+
 class AutoPause {
+    private player: MediaPlayer;
+    private pausedByVisibility: boolean;
+    
     constructor() {
         // al utilizar bind de esta manera unimos this a la instancia del objeto
         this.handlerIntersection = this.handlerIntersection.bind(this)
         this.handlerVisiblilityChange = this.handlerVisiblilityChange.bind(this)
         this.pausedByVisibility = false
     }
-    run(player){
+
+    run(player: MediaPlayer){
         this.player = player
         // como es intersection observer el que esta llamando a la funcion play, tenemos que unir this a la instancia del objeto y no al intersectionOBserver
         const observer = new IntersectionObserver(this.handlerIntersection, { 
@@ -15,14 +21,15 @@ class AutoPause {
 
         document.addEventListener('visibilitychange', this.handlerVisiblilityChange)
     }
-    handlerIntersection(entries) {
+
+    private handlerIntersection(entries: IntersectionObserverEntry[]) {
             const entry = entries[0]
             // isIntersecting es un booleano que, en este caso, nos dice si el video esta en pantalla
             entry.isIntersecting? 
                 this.player.play()
                 :this.player.pause()
     }
-    handlerVisiblilityChange() {
+    private handlerVisiblilityChange() {
             const isVisible = document.visibilityState === 'visible'
             if (isVisible) {
                 if (this.pausedByVisibility) {
@@ -36,4 +43,4 @@ class AutoPause {
             }
     }
 }
-export {AutoPause}
+export { AutoPause }

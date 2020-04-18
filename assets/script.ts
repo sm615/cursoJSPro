@@ -1,10 +1,10 @@
-import MediaPlayer from './mediaplayer.js';
-import AutoPlay from './plugins/autoplay.js'
-import AutoPause from './plugins/autopause.js'
+import { MediaPlayer } from './mediaplayer';
+import { AutoPlay } from './plugins/autoplay'
+import { AutoPause } from './plugins/autopause'
 
 const plugins = [
+    new AutoPause(),
     new AutoPlay(),
-    new AutoPause()
 ]
 
 const video = document.querySelector("video")
@@ -12,10 +12,10 @@ const player = new MediaPlayer({ el: video, plugins: plugins })
 video.onclick = () => player.togglePlay()
 
 
-const playButton = document.getElementById('play_btn')
+const playButton: HTMLElement = document.getElementById('play_btn')
 playButton.onclick = () => player.togglePlay()
 
-const soundButton = document.getElementById('sound_btn')
+const soundButton: HTMLElement = document.getElementById('sound_btn')
 soundButton.onclick = () => player.sound()
 
 if('serviceWorker' in navigator) {

@@ -1,9 +1,11 @@
+import { MediaPlayer } from "../mediaplayer"
+
 class AutoPlay 
 {
     constructor() {}
-    run(player) {
+    run(player: MediaPlayer) {
         player.sound()
-        player.paused?
+        player.media.paused?
             player.play()
             :player.pause()        
     }

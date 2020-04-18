@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel typescript/ts.html"
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "Santiago Mozo <smozo615@gmail.com>",
